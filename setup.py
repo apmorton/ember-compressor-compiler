@@ -32,7 +32,7 @@ setup(name='ember-compressor-compiler',
     package_dir = {'': 'src'},
     include_package_data=True,
     package_data = {
-        '': ['js/*.js'],
+        'embercompressorcompiler': ['js/*.js'],
     },
     zip_safe=False,
     install_requires=install_requires,
