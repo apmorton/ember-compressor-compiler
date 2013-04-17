@@ -12,10 +12,6 @@ install_requires = [
     'django_compressor'
 ]
 
-tests_require = [
-    'Django'
-]
-
 setup(name='ember-compressor-compiler',
     version=version,
     description="django_compressor filter to compile ember templates",
@@ -36,6 +32,5 @@ setup(name='ember-compressor-compiler',
     },
     zip_safe=False,
     install_requires=install_requires,
-    tests_require=tests_require,
     test_suite='nose.collector'
 )
