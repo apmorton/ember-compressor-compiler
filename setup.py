@@ -5,7 +5,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.md')).read()
 
 
-version = '0.1.0'
+version = '0.1.1'
 
 install_requires = [
     'PyExecJS',
@@ -34,7 +34,6 @@ setup(
     license='MIT',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    include_package_data=True,
     package_data={
         'embercompressorcompiler': ['js/*.js'],
     },
