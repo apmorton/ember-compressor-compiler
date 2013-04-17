@@ -19,7 +19,8 @@ Features
 - flexible template naming conventions
 - inline handlebars in django templates
 - 100% test coverage
-- semantic code that follows [PEP 8](http://www.python.org/dev/peps/pep-0008/)
+- [PEP 8](http://www.python.org/dev/peps/pep-0008/) compliance
+- [semver](http://semver.org/) compliance
 
 
 Installing

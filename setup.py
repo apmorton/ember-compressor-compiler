@@ -5,7 +5,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.md')).read()
 
 
-version = '0.1'
+version = '0.1.0'
 
 install_requires = [
     'PyExecJS',
@@ -30,7 +30,7 @@ setup(
     keywords='',
     author='Austin Morton',
     author_email='amorton@juvsoft.com',
-    url='',
+    url='https://github.com/Juvenal1228/ember-compressor-compiler',
     license='MIT',
     packages=find_packages('src'),
     package_dir={'': 'src'},
