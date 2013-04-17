@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import sys, os
+import os
 
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
@@ -12,12 +12,20 @@ install_requires = [
     'django_compressor'
 ]
 
-setup(name='ember-compressor-compiler',
+setup(
+    name='ember-compressor-compiler',
     version=version,
     description="django_compressor filter to compile ember templates",
     long_description=README,
     classifiers=[
-      # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Internet :: WWW/HTTP',
     ],
     keywords='',
     author='Austin Morton',
@@ -25,9 +33,9 @@ setup(name='ember-compressor-compiler',
     url='',
     license='MIT',
     packages=find_packages('src'),
-    package_dir = {'': 'src'},
+    package_dir={'': 'src'},
     include_package_data=True,
-    package_data = {
+    package_data={
         'embercompressorcompiler': ['js/*.js'],
     },
     zip_safe=False,
