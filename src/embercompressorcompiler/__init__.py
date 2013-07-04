@@ -14,7 +14,7 @@ class EmberPrecompiler(object):
 
     def __setup(self):
         source = ''
-        for js in ['compiler', 'ember-template-compiler']:
+        for js in ['compiler', 'handlebars', 'ember-template-compiler']:
             source += resource_string(__name__, 'js/{0}.js'.format(js))
         self.ctx = execjs.compile(source)
 

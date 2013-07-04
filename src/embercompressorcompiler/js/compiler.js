@@ -1,4 +1,4 @@
-exports = new Object();
+exports = {};
 
 function precompile(source) {
     var compiled = exports.precompile(source);
