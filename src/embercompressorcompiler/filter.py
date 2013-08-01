@@ -1,5 +1,5 @@
 from compressor.filters import FilterBase, FilterError
-from embercompressorcompiler import EmberPrecompiler
+from embercompressorcompiler import EmberPrecompiler, CompilerError
 
 
 class EmberHandlebarsCompiler(FilterBase):
@@ -57,4 +57,7 @@ class EmberHandlebarsCompiler(FilterBase):
 
     def input(self, **kwargs):
         name = self.determine_name(**kwargs)
-        return self.ep.compile(name, self.content)
+        try:
+            return self.ep.compile(name, self.content)
+        except CompilerError as ex:
+            raise FilterError(ex)

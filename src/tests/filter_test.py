@@ -1,5 +1,5 @@
 import re
-from nose.tools import assert_equal, assert_not_equal, raises
+from nose.tools import assert_equal, assert_not_equal, assert_raises
 
 from django.conf import settings
 settings.configure(STATIC_URL='/static/')
@@ -48,10 +48,9 @@ class TestEmberHandlebarsCompiler(object):
             calculated = ehc.name_from_basename(basename)
             assert_equal(expected, calculated)
 
-    @raises(FilterError)
     def test_determine_name_no_name(self):
         ehc = EHC("", {})
-        ehc.input()
+        assert_raises(FilterError, ehc.input)
 
     def test_determine_name_attr_name(self):
         expected = 'template/name'
@@ -91,3 +90,8 @@ class TestEmberHandlebarsCompiler(object):
 
         msg = '{0} doesn\'t match RE {1}'.format(compiled, expected_re)
         assert_not_equal(matches, None, msg)
+
+    def test_input_invalid(self):
+        ehc = EHC("{{test", {'data-template-name': 't'})
+
+        assert_raises(FilterError, ehc.input)

@@ -1,6 +1,12 @@
 import execjs
 from pkg_resources import resource_string
 
+src = ''
+
+
+class CompilerError(Exception):
+    pass
+
 
 class EmberPrecompiler(object):
     def __init__(self, wrap=None, namespace=None):
@@ -13,10 +19,12 @@ class EmberPrecompiler(object):
         self.__setup()
 
     def __setup(self):
-        source = ''
-        for js in ['compiler', 'handlebars', 'ember-template-compiler']:
-            source += resource_string(__name__, 'js/{0}.js'.format(js))
-        self.ctx = execjs.compile(source)
+        global src
+
+        if not src:
+            for js in ['compiler', 'handlebars', 'ember-template-compiler']:
+                src += resource_string(__name__, 'js/{0}.js'.format(js))
+        self.ctx = execjs.compile(src)
 
     def _compile(self, source):
         return self.ctx.call('precompile', source)
@@ -28,7 +36,11 @@ class EmberPrecompiler(object):
         return '{0}["{1}"] = {2};'.format(self.namespace, name, compiled)
 
     def compile(self, name, source):
-        compiled = self._compile(source)
+        try:
+            compiled = self._compile(source)
+        except Exception as ex:
+            msg = 'error while compiling {0}'.format(name)
+            raise CompilerError(msg, ex)
 
         if self.wrap:
             compiled = self._wrap(compiled)

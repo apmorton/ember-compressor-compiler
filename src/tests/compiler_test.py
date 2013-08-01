@@ -1,9 +1,10 @@
 import re
 
 from nose.tools import assert_equal, assert_not_equal
-from nose.tools import assert_true, assert_false
+from nose.tools import assert_true, assert_false, assert_raises
 
 from embercompressorcompiler import EmberPrecompiler as EP
+from embercompressorcompiler import CompilerError as CE
 
 
 class TestEmberPrecompiler(object):
@@ -81,3 +82,9 @@ class TestEmberPrecompiler(object):
 
         msg = '{0} doesn\'t match RE {1}'.format(compiled, expected_re)
         assert_not_equal(matches, None, msg)
+
+    def test_compile_invalid_handlebars(self):
+        source = '{{test'
+        ep = EP(wrap=False, namespace=False)
+
+        assert_raises(CE, ep.compile, None, source)
