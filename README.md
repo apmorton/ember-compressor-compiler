@@ -1,7 +1,7 @@
 Ember Compressor Compiler
 =========================
 
-[![Build Status](https://travis-ci.org/Juvenal1228/ember-compressor-compiler.png?branch=master)](https://travis-ci.org/Juvenal1228/ember-compressor-compiler)
+[![Build Status](https://travis-ci.org/apmorton/ember-compressor-compiler.png?branch=master)](https://travis-ci.org/apmorton/ember-compressor-compiler)
 
 Purpose
 -------
@@ -32,7 +32,7 @@ Install with pip/easy_install from the pypi
 
 or clone the latest source
 
-    git clone https://github.com/Juvenal1228/ember-compressor-compiler.git
+    git clone https://github.com/apmorton/ember-compressor-compiler.git
     cd ember-compressor-compiler
     python setup.py install
 
